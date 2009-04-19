@@ -1,5 +1,5 @@
 Revision history for Perl module OSTypes.
 
-0.001  
+0.001  Sun Apr 19 17:16:18 EDT 2009
 
   - initial release based on Module::Build and Devel::CheckOS
