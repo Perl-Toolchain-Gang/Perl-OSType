@@ -2,7 +2,7 @@ package OSType;
 use strict;
 use warnings;
 
-our $VERSION = '0.01';
+our $VERSION = '0.001';
 
 require Exporter;
 our @ISA = qw(Exporter);
@@ -70,7 +70,7 @@ my %OSFAMILIES = (
   Unix => [ grep { $OSTYPES{$_} eq 'Unix' } keys %OSTYPES ],
   Apple => [ qw/darwin MacOS/ ],
   DEC => [ qw/dec_osf VMS/ ],
-  MicrosoftWindows => [ qw/cygwin MSWin32/ ],
+  MicrosoftWindows => [ qw/MSWin32 cygwin/ ],
   Realtime => [ qw/qnx/ ],
   Sun => [ qw/solaris sunos/ ],
 );
@@ -90,7 +90,8 @@ sub is_os_type {
 sub os_family {
   my ($family) = @_;
   return unless exists $OSFAMILIES{$family};
-  return @{ $OSFAMILIES{$family} };
+  my @names = @{ $OSFAMILIES{$family} };
+  return wantarray ? @names : $names[0];
 }
 
 sub is_os_family {
@@ -134,7 +135,7 @@ Microsoft operating systems are given the type 'Windows' rather than 'Win32'.)
 L<Devel::CheckOS> introduced the notion of OS families, which do not
 necessarily correspond to types.  An operating system can belong to multiple
 families.  Supported families include the following (descriptions are taken
-verbatim from Devel::CheckOS):
+nearly verbatim from Devel::CheckOS):
 
 =over 4
 
@@ -164,7 +165,9 @@ and user groups.  Permissions may not be supported on all filesystems.
 
 The filesystem has a single root
 
-=item The C API for the operating system is largely POSIX-compatible
+=item *
+
+The C API for the operating system is largely POSIX-compatible
 
 =back
 
@@ -172,10 +175,11 @@ The filesystem has a single root
 
 Apple, DEC, Sun
 
-These include any OS written by, respectively, DEC, Sun, and Apple.
+These include any OS written by, respectively, Apple, DEC, and Sun.
 They exist because, while, eg, Mac OS Classic and Mac OS X are very
 different platforms, they do support some unique features - such as
-AppleScript.
+AppleScript.  Vendor families may also have similar known issues or
+incompatibilities, such as with Sun's 'tar' program.
 
 =item *
 
@@ -211,24 +215,26 @@ operating system is not recognized, the function will return the empty string.
   $is_windows = is_os_type('Windows');
   $is_unix    = is_os_type('Unix', 'dragonfly');
 
-Returns true or false if an operating system is of the given type.  As with
-C<os_type>, it will use the current operating system as a default.
+Given an OS type and OS name, returns true or false if the OS name is of the
+given type.  As with C<os_type>, it will use the current operating system as a
+default if no OS name is provided.
 
 =head2 os_family()
 
   @names = os_family('Apple');
 
-Returns a list of OS names (as they would appear in C<$^O>) that belong to
-the given family.  If the family name is not known, the function will return an
-empty list.
+Given an OS family, returns a list of OS names (as they would appear in
+C<$^O>) that belong to the given family.  If the family name is not known, the
+function will return an empty list.
 
 =head2 is_os_family()
 
   $is_realtime  = is_os_family('Realtime');
   $is_sun       = is_os_family('Sun', 'solaris');
 
-Returns true or false if an operating system in in the given family.  As with
-C<os_type>, it will use the current operating system as a default.
+Given an OS family and an OS name, returns true or false if the OS name is
+in the given family.  As with C<os_type>, it will use the current operating
+system as a default if no OS name is provided.
 
 =head1 SEE ALSO
 

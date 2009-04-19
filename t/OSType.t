@@ -3,7 +3,7 @@ use warnings;
 
 use Test::More;
 
-plan tests => 17;
+plan tests => 25;
 
 #--------------------------------------------------------------------------#
 # API tests 
@@ -46,6 +46,31 @@ is( os_type("asdfjkl"), q{}, 'unknown os_type() returns empty string' );
   local $^O = 'VOS';
   ok( ! is_os_type( 'Unix' ), "is_os_type (false)" );
   ok( is_os_type( 'VOS' ),    "is_os_type (true)" );
+  ok( ! is_os_type(), "is_os_type (false if no type provided)" );
 }
 
 
+#--------------------------------------------------------------------------#
+# os_family
+#--------------------------------------------------------------------------#
+
+{
+  is_deeply( [ sort( os_family('Sun')) ], [ qw/solaris sunos/ ], 
+    "os_family (exists)" );
+  is_deeply( [ sort( os_family('dfadsf') ) ], [], "os_family (empty list)" );
+  is( my $first = os_family('MicrosoftWindows'), 'MSWin32', 
+    'os_family (scalar context)')
+}
+
+#--------------------------------------------------------------------------#
+# is_os_family
+#--------------------------------------------------------------------------#
+
+{
+  local $^O = 'qnx';
+  ok( is_os_family('Realtime'), "is_os_family('qnx') is 'Realtime" );
+  ok( ! is_os_family('Realtime', 'MSWin32'), 
+    "is_os_family('MSWin32') is not 'Realtime" );
+  ok( is_os_family('Unix', 'qnx'), "is_os_family('qnx') is 'Unix" );
+  ok( ! is_os_family('aljfladfk'), "unknown is_os_family()' is false" );
+}
