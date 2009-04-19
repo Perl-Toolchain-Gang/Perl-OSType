@@ -77,6 +77,7 @@ sub os_type {
 sub is_os_type {
   my ($type, $os) = @_;
   return unless $type;
+
   $os ||= $^O;
   return $OSTYPES{$os} eq $type;
 }
@@ -88,6 +89,8 @@ sub os_family {
 
 sub is_os_family {
   my ($family, $os) = @_;
+  return unless $family;
+
   return unless exists $OSFAMILIES{$family};
   $os ||= $^O;
   return scalar grep { $_ eq $os } @{ $OSFAMILIES{$family} };
