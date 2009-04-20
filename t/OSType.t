@@ -19,9 +19,9 @@ is( $current_type, os_type( $^O ), '... matches os_type($^O)' );
 
 is(os_type( 'titanix' ), undef, 'the system they said could not go down...');
 
-is(os_type( '' ), 'Unix', 'Huh? - should fail');
+is(os_type( '' ), '', 'default');
 
-is(os_type( undef ), 'Unix', 'Huh? - should fail');
+is(os_type( undef ), 'Unix', 'default');
 
 is(is_os_type(), undef);
 

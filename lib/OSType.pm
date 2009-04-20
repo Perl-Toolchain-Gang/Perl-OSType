@@ -71,7 +71,12 @@ my %OSFAMILIES = (
 );
 
 sub os_type {
-  return $OSTYPES{ shift || $^O };
+  my $os = shift;
+
+  return $os if defined $os and not $os;
+
+  $os ||= $^O;
+  return $OSTYPES{ $os };
 }
 
 sub is_os_type {
