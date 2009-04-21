@@ -97,5 +97,5 @@ can_ok( $test_pkg, @functions );
   ok( is_os_family('Unix', 'qnx'), "is_os_family('qnx') is 'Unix" );
   ok( ! is_os_family(NON_EXISTANT_OS_FAMILY), "unknown is_os_family()' is false" );
   ok( ! is_os_family(NON_EXISTANT_OS_FAMILY, 'freebsd'), "unknown is_os_family()' is false" );
-  ok( ! is_os_family('Unix', NON_EXISTANT_OS));
+  ok( ! is_os_family('Unix', NON_EXISTANT_OS), "unknown os argument to is_os_family() is false" );
 }
