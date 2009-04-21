@@ -90,7 +90,7 @@ sub is_os_type {
 
 sub os_family {
   my ($family) = @_;
-  return unless exists $OSFAMILIES{$family};
+  return unless defined $family && exists $OSFAMILIES{$family};
   my @names = @{ $OSFAMILIES{$family} };
   return wantarray ? @names : $names[0];
 }
