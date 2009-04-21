@@ -77,19 +77,14 @@ my %OSFAMILIES = (
 
 sub os_type {
   my ($os) = @_;
-
-  return $os if defined $os and not $os;
-
-  $os ||= $^O;
+  $os = $^O unless defined $os;
   return $OSTYPES{ $os } || q{};
 }
 
 sub is_os_type {
   my ($type, $os) = @_;
   return unless $type;
-
-  $os ||= $^O;
-
+  $os = $^O unless defined $os;
   return os_type($os) eq $type;
 }
 
@@ -104,7 +99,7 @@ sub is_os_family {
   my ($family, $os) = @_;
   my @family = os_family($family);
   return unless @family;
-  $os ||= $^O;
+  $os = $^O unless defined $os;
   return scalar grep { $_ eq $os } @family;
 }
 
