@@ -1,6 +1,5 @@
-Revision history for Perl extension OSTypes.
+Revision history for Perl module OSTypes.
 
-0.01  Sun Apr 19 00:01:25 2009
-	- original version; created by h2xs 1.23 with options
-		-XA OSTypes
+0.001  Sun Apr 19 17:16:18 EDT 2009
 
+  - initial release based on Module::Build and Devel::CheckOS

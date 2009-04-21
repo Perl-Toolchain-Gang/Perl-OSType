@@ -1,40 +1,114 @@
-OSTypes version 0.01
-====================
+NAME
+    OSType - Map operating system names to generic types or families
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+SYNOPSIS
+      use OSType ':all';
 
-A README file is required for CPAN modules since CPAN extracts the
-README file from a module distribution so that people browsing the
-archive can use it get an idea of the modules uses. It is usually a
-good idea to provide version information here so that people can
-decide whether fixes for the module are worth downloading.
+      $current_type = os_type();
+      $other_type = os_type('dragonfly'); # gives 'Unix'
 
-INSTALLATION
+      $is_sun = is_os_family("Sun");
 
-To install this module type the following:
+DESCRIPTION
+    Modules that provide OS-specific behaviors often need to know if the
+    current operating system matches a more generic type or family of
+    operating systems. For example, 'linux' is a type of 'Unix' operating
+    system and so is 'freebsd'.
 
-   perl Makefile.PL
-   make
-   make test
-   make install
+    This module provides a mapping between an operating system name as given
+    by $^O and a more generic type. The initial version is based on the OS
+    type mappings provided in Module::Build and ExtUtils::CBuilder. (Thus,
+    Microsoft operating systems are given the type 'Windows' rather than
+    'Win32'.)
 
-DEPENDENCIES
+  OS Families
+    Devel::CheckOS introduced the notion of OS families, which do not
+    necessarily correspond to types. An operating system can belong to
+    multiple families. Supported families include the following
+    (descriptions are taken nearly verbatim from Devel::CheckOS):
 
-This module requires these other modules and libraries:
+    *   Unix
 
-  blah blah blah
+        Broadly speaking, these are platforms where:
 
-COPYRIGHT AND LICENCE
+        *   Devices are represented as pseudo-files in the filesystem
 
-Put the correct copyright and licence information here.
+        *   Symlinks and hardlinks are supported in at least some
+            filesystems
 
-Copyright (C) 2009 by David Golden
+        *   "Unix-style" permissions are supported; That is, there are
+            seperate read/write/execute permissions for file owner, group
+            and anyone. This implies the presence of multiple user accounts
+            and user groups. Permissions may not be supported on all
+            filesystems.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.10.0 or,
-at your option, any later version of Perl 5 you may have available.
+        *   The filesystem has a single root
 
+        *   The C API for the operating system is largely POSIX-compatible
+
+    *   Apple, DEC, Sun
+
+        These include any OS written by, respectively, Apple, DEC, and Sun.
+        They exist because, while, eg, Mac OS Classic and Mac OS X are very
+        different platforms, they do support some unique features - such as
+        AppleScript. Vendor families may also have similar known issues or
+        incompatibilities, such as with Sun's 'tar' program.
+
+    *   MicrosoftWindows
+
+        This includes any version of Windows and also includes things like
+        Cygwin which run on top of it.
+
+    *   Realtime
+
+        This is for all real-time OSes. So far, it only includes QNX.
+
+USAGE
+    No functions are exported by default. The export tag ":all" will export
+    all functions listed below.
+
+  os_type()
+      $os_type = ostype();
+      $os_type = ostype('MSWin32');
+
+    Returns a single, generic OS type for a given operating system name.
+    With no arguments, returns the OS type for the current value of $^O. If
+    the operating system is not recognized, the function will return the
+    empty string.
+
+  is_os_type()
+      $is_windows = is_os_type('Windows');
+      $is_unix    = is_os_type('Unix', 'dragonfly');
+
+    Given an OS type and OS name, returns true or false if the OS name is of
+    the given type. As with "os_type", it will use the current operating
+    system as a default if no OS name is provided.
+
+  os_family()
+      @names = os_family('Apple');
+
+    Given an OS family, returns a list of OS names (as they would appear in
+    $^O) that belong to the given family. If the family name is not known,
+    the function will return an empty list.
+
+  is_os_family()
+      $is_realtime  = is_os_family('Realtime');
+      $is_sun       = is_os_family('Sun', 'solaris');
+
+    Given an OS family and an OS name, returns true or false if the OS name
+    is in the given family. As with "os_type", it will use the current
+    operating system as a default if no OS name is provided.
+
+SEE ALSO
+    *   Devel::CheckOS
+
+AUTHOR
+    David Golden, <dagolden@cpan.org>
+
+COPYRIGHT AND LICENSE
+    Copyright (C) 2009 by David Golden
+
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself, either Perl version 5.10.0 or, at
+    your option, any later version of Perl 5 you may have available.
 
