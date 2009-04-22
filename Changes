@@ -1,5 +1,9 @@
 Revision history for Perl module OSTypes.
 
+0.003 Wed Apr 22 13:30:41 EDT 2009
+
+  - fixed test bugs on Perl 5.6
+
 0.002 Tue Apr 21 08:54:55 EDT 2009
 
   - improved handling of undefined/unknown arguments; improved test
