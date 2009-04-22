@@ -2,7 +2,7 @@ package OSType;
 use strict;
 use warnings;
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 require Exporter;
 our @ISA = qw(Exporter);
