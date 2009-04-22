@@ -74,9 +74,9 @@ can_ok( $test_pkg, @functions );
 
   is(os_family(NON_EXISTANT_OS), undef, 'non-existant operating system');
 	
-  is_deeply( [ sort( os_family('Sun')) ], [ qw/solaris sunos/ ], 
+  is_deeply( [ sort { $a cmp $b } os_family('Sun') ], [ qw/solaris sunos/ ], 
     "os_family (exists)" );
-  is_deeply( [ sort( os_family(NON_EXISTANT_OS) ) ], [], "os_family (empty list)" );
+  is_deeply( [ sort { $a cmp $b } os_family(NON_EXISTANT_OS) ], [], "os_family (empty list)" );
   is( my $first = os_family('MicrosoftWindows'), 'MSWin32', 
     'os_family (scalar context)')
 }
