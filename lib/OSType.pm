@@ -1,8 +1,8 @@
-package OSType;
 use strict;
 use warnings;
+package OSType;
+# ABSTRACT: Map operating system names to generic types or families
 
-our $VERSION = '0.003';
 
 require Exporter;
 our @ISA = qw(Exporter);
@@ -105,10 +105,6 @@ sub is_os_family {
 
 1;
 __END__
-
-=head1 NAME
-
-OSType - Map operating system names to generic types or families
 
 =head1 SYNOPSIS
 
@@ -246,18 +242,6 @@ system as a default if no OS name is provided.
 L<Devel::CheckOS>
 
 =back
-
-=head1 AUTHOR
-
-David Golden, E<lt>dagolden@cpan.orgE<gt>
-
-=head1 COPYRIGHT AND LICENSE
-
-Copyright (C) 2009 by David Golden
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.10.0 or,
-at your option, any later version of Perl 5 you may have available.
 
 =cut
 
