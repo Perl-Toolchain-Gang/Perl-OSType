@@ -7,7 +7,7 @@ use constant NON_EXISTANT_OS => 'titanix'; #the system they said could not go do
 use constant NON_EXISTANT_OS_FAMILY => 'aljfladfk';
 
 #--------------------------------------------------------------------------#
-# API tests 
+# API tests
 #--------------------------------------------------------------------------#
 
 require_ok( 'OSType' );
@@ -22,11 +22,11 @@ for my $sub ( @functions ) {
 
 my $test_pkg = "testpackage$$";
 
-ok( eval "package $test_pkg; use OSType ':all'; 1", 
+ok( eval "package $test_pkg; use OSType ':all'; 1",
   "Testing 'use OSType qw/:all/'"
 );
 
-can_ok( $test_pkg, @functions ); 
+can_ok( $test_pkg, @functions );
 
 
 #--------------------------------------------------------------------------#
@@ -46,7 +46,7 @@ can_ok( $test_pkg, @functions );
 
   is(os_type( undef ), 'Unix', 'resolved operating system from $^O');
 }
-	
+
 #--------------------------------------------------------------------------#
 # is_os_type
 #--------------------------------------------------------------------------#
@@ -75,11 +75,11 @@ can_ok( $test_pkg, @functions );
   is(os_family(''), undef, 'os_family() without arguments');
 
   is(os_family(NON_EXISTANT_OS), undef, 'non-existant operating system');
-	
-  is_deeply( [ sort { $a cmp $b } os_family('Sun') ], [ qw/solaris sunos/ ], 
+
+  is_deeply( [ sort { $a cmp $b } os_family('Sun') ], [ qw/solaris sunos/ ],
     "os_family (exists)" );
   is_deeply( [ sort { $a cmp $b } os_family(NON_EXISTANT_OS) ], [], "os_family (empty list)" );
-  is( my $first = os_family('MicrosoftWindows'), 'MSWin32', 
+  is( my $first = os_family('MicrosoftWindows'), 'MSWin32',
     'os_family (scalar context)')
 }
 
@@ -94,7 +94,7 @@ can_ok( $test_pkg, @functions );
 
   local $^O = 'qnx';
   ok( is_os_family('Realtime'), "is_os_family('qnx') is 'Realtime" );
-  ok( ! is_os_family('Realtime', 'MSWin32'), 
+  ok( ! is_os_family('Realtime', 'MSWin32'),
     "is_os_family('MSWin32') is not 'Realtime" );
   ok( is_os_family('Unix', 'qnx'), "is_os_family('qnx') is 'Unix" );
   ok( ! is_os_family(NON_EXISTANT_OS_FAMILY), "unknown is_os_family()' is false" );
