@@ -2,6 +2,8 @@ Revision history for Perl module OSTypes.
 
 {{$NEXT}}
 
+0.004     2010-05-05 22:04:18 EST5EDT
+
   - added 'beos' as Unix type
 
   - fix broken tests on MSWin32
