@@ -42,6 +42,8 @@ can_ok( $test_pkg, @functions );
 
   is(os_type( '' ), '', 'empty string returns empty string');
 
+  local $^O = 'linux';
+
   is(os_type( undef ), 'Unix', 'resolved operating system from $^O');
 }
 	
