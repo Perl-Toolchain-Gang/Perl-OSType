@@ -2,6 +2,12 @@ Revision history for Perl module OSTypes.
 
 {{$NEXT}}
 
+  - fix broken tests on MSWin32
+  
+  - clean up test output
+
+  - migrate distribution to Dist::Zilla
+
 0.003 Wed Apr 22 13:30:41 EDT 2009
 
   - fixed test bugs on Perl 5.6
