@@ -17,6 +17,7 @@ our @EXPORT_OK = @{ $EXPORT_TAGS{all} };
 my %OSTYPES = qw(
   aix         Unix
   bsdos       Unix
+  beos        Unix
   dgux        Unix
   dragonfly   Unix
   dynixptx    Unix
