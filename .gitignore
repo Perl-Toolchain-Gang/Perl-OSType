@@ -13,3 +13,5 @@
 /PM_to_blib
 /MYMETA.yml
 /OSType-*
+/.build
+/Perl-OSType*
