@@ -10,20 +10,20 @@ use constant NON_EXISTENT_OS_FAMILY => 'aljfladfk';
 # API tests
 #--------------------------------------------------------------------------#
 
-require_ok( 'OSType' );
+require_ok( 'Perl::OSType' );
 
-can_ok( 'OSType', 'os_type' );
+can_ok( 'Perl::OSType', 'os_type' );
 
 my @functions = qw/os_type os_family is_os_type is_os_family/;
 for my $sub ( @functions ) {
-  ok( eval { OSType->import($sub); 1 }, "importing $sub()" );
+  ok( eval { Perl::OSType->import($sub); 1 }, "importing $sub()" );
   can_ok( 'main', $sub );
 }
 
 my $test_pkg = "testpackage$$";
 
-ok( eval "package $test_pkg; use OSType ':all'; 1",
-  "Testing 'use OSType qw/:all/'"
+ok( eval "package $test_pkg; use Perl::OSType ':all'; 1",
+  "Testing 'use Perl::OSType qw/:all/'"
 );
 
 can_ok( $test_pkg, @functions );

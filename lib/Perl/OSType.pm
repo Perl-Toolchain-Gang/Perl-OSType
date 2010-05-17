@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-package OSType;
+package Perl::OSType;
 # ABSTRACT: Map operating system names to generic types or families
 
 
@@ -109,7 +109,7 @@ __END__
 
 =head1 SYNOPSIS
 
-  use OSType ':all';
+  use Perl::OSType ':all';
 
   $current_type = os_type();
   $other_type = os_type('dragonfly'); # gives 'Unix'

@@ -2,6 +2,9 @@ Revision history for Perl module OSTypes.
 
 {{$NEXT}}
 
+  - renamed from OSType to Perl::OSType in preparation for
+    addition to Perl core [requested by Jesse Vincent]
+
 0.004     2010-05-05 22:04:18 EST5EDT
 
   - added 'beos' as Unix type
