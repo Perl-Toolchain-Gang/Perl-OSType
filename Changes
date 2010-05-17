@@ -2,6 +2,8 @@ Revision history for Perl module Perl::OSType
 
 {{$NEXT}}
 
+0.005     2010-05-16 21:52:28 EST5EDT
+
   - renamed from OSType to Perl::OSType in preparation for
     addition to Perl core [requested by Jesse Vincent]
 
