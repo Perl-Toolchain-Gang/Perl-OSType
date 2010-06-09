@@ -1,14 +1,13 @@
 use strict;
 use warnings;
 package Perl::OSType;
-# ABSTRACT: Map operating system names to generic types or families
-
+# ABSTRACT: Map Perl operating system names to generic types
 
 require Exporter;
 our @ISA = qw(Exporter);
 
 our %EXPORT_TAGS = (
-  all => [ qw( os_type is_os_type os_family is_os_family ) ]
+  all => [ qw( os_type is_os_type ) ]
 );
 
 our @EXPORT_OK = @{ $EXPORT_TAGS{all} };
@@ -66,16 +65,6 @@ my %OSTYPES = qw(
   mpeix       MPEiX
 );
 
-# Adapted from Devel::CheckOS by David Cantrell
-my %OSFAMILIES = (
-  Unix => [ grep { $OSTYPES{$_} eq 'Unix' } keys %OSTYPES ],
-  Apple => [ qw/darwin MacOS/ ],
-  DEC => [ qw/dec_osf VMS/ ],
-  MicrosoftWindows => [ qw/MSWin32 cygwin/ ],
-  Realtime => [ qw/qnx/ ],
-  Sun => [ qw/solaris sunos/ ],
-);
-
 sub os_type {
   my ($os) = @_;
   $os = $^O unless defined $os;
@@ -89,21 +78,6 @@ sub is_os_type {
   return os_type($os) eq $type;
 }
 
-sub os_family {
-  my ($family) = @_;
-  return unless defined $family && exists $OSFAMILIES{$family};
-  my @names = @{ $OSFAMILIES{$family} };
-  return wantarray ? @names : $names[0];
-}
-
-sub is_os_family {
-  my ($family, $os) = @_;
-  my @family = os_family($family);
-  return unless @family;
-  $os = $^O unless defined $os;
-  return scalar grep { $_ eq $os } @family;
-}
-
 1;
 __END__
 
@@ -114,12 +88,10 @@ __END__
   $current_type = os_type();
   $other_type = os_type('dragonfly'); # gives 'Unix'
 
-  $is_sun = is_os_family("Sun");
-
 =head1 DESCRIPTION
 
 Modules that provide OS-specific behaviors often need to know if
-the current operating system matches a more generic type or family of
+the current operating system matches a more generic type of
 operating systems. For example, 'linux' is a type of 'Unix' operating system
 and so is 'freebsd'.
 
@@ -127,72 +99,6 @@ This module provides a mapping between an operating system name as given by
 C<$^O> and a more generic type.  The initial version is based on the OS type
 mappings provided in L<Module::Build> and L<ExtUtils::CBuilder>.  (Thus,
 Microsoft operating systems are given the type 'Windows' rather than 'Win32'.)
-
-=head2 OS Families
-
-L<Devel::CheckOS> introduced the notion of OS families, which do not
-necessarily correspond to types.  An operating system can belong to multiple
-families.  Supported families include the following (descriptions are taken
-nearly verbatim from Devel::CheckOS):
-
-=over 4
-
-=item *
-
-Unix
-
-Broadly speaking, these are platforms where:
-
-=over
-
-=item *
-
-Devices are represented as pseudo-files in the filesystem
-
-=item *
-
-Symlinks and hardlinks are supported in at least some filesystems
-
-=item *
-
-"Unix-style" permissions are supported; That is, there are seperate read/write/execute permissions for file owner,
-group and anyone.  This implies the presence of multiple user accounts
-and user groups.  Permissions may not be supported on all filesystems.
-
-=item *
-
-The filesystem has a single root
-
-=item *
-
-The C API for the operating system is largely POSIX-compatible
-
-=back
-
-=item *
-
-Apple, DEC, Sun
-
-These include any OS written by, respectively, Apple, DEC, and Sun.
-They exist because, while, eg, Mac OS Classic and Mac OS X are very
-different platforms, they do support some unique features - such as
-AppleScript.  Vendor families may also have similar known issues or
-incompatibilities, such as with Sun's 'tar' program.
-
-=item *
-
-MicrosoftWindows
-
-This includes any version of Windows and also includes things like
-Cygwin which run on top of it.
-
-=item *
-
-Realtime
-
-This is for all real-time OSes.  So far, it only includes QNX.
-
-=back
 
 =head1 USAGE
 
@@ -216,23 +122,6 @@ operating system is not recognized, the function will return the empty string.
 Given an OS type and OS name, returns true or false if the OS name is of the
 given type.  As with C<os_type>, it will use the current operating system as a
 default if no OS name is provided.
-
-=head2 os_family()
-
-  @names = os_family('Apple');
-
-Given an OS family, returns a list of OS names (as they would appear in
-C<$^O>) that belong to the given family.  If the family name is not known, the
-function will return an empty list.
-
-=head2 is_os_family()
-
-  $is_realtime  = is_os_family('Realtime');
-  $is_sun       = is_os_family('Sun', 'solaris');
-
-Given an OS family and an OS name, returns true or false if the OS name is
-in the given family.  As with C<os_type>, it will use the current operating
-system as a default if no OS name is provided.
 
 =head1 SEE ALSO
 
