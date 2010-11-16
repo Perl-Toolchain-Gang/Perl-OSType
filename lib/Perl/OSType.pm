@@ -108,8 +108,8 @@ all functions listed below.
 
 =head2 os_type()
 
-  $os_type = ostype();
-  $os_type = ostype('MSWin32');
+  $os_type = os_type();
+  $os_type = os_type('MSWin32');
 
 Returns a single, generic OS type for a given operating system name.  With no
 arguments, returns the OS type for the current value of C<$^O>.  If the
