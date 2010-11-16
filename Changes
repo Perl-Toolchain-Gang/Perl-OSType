@@ -2,6 +2,8 @@ Revision history for Perl module Perl::OSType
 
 {{$NEXT}}
 
+1.002     2010-11-16 09:02:53 EST5EDT
+
   - fixed documention typo (s/ostype/os_type/)
 
 1.001     2010-11-16 07:59:36 EST5EDT
