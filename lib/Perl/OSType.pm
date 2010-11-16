@@ -12,7 +12,7 @@ our %EXPORT_TAGS = (
 
 our @EXPORT_OK = @{ $EXPORT_TAGS{all} };
 
-# taken from Module::Build by Ken Williams et al.
+# originally taken from Module::Build by Ken Williams et al.
 my %OSTYPES = qw(
   aix         Unix
   bsdos       Unix
@@ -24,6 +24,7 @@ my %OSTYPES = qw(
   linux       Unix
   haiku       Unix
   hpux        Unix
+  iphoneos    Unix
   irix        Unix
   darwin      Unix
   machten     Unix
