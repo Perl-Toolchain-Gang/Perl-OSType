@@ -2,6 +2,8 @@ Revision history for Perl module Perl::OSType
 
 {{$NEXT}}
 
+1.003     2013-03-20 15:33:16 America/New_York
+
     [FIXED]
 
     - Fixed detection of VOS; $^O reports 'vos', not 'VOS'
