@@ -2,6 +2,7 @@ use strict;
 use warnings;
 package Perl::OSType;
 # ABSTRACT: Map Perl operating system names to generic types
+# VERSION
 
 require Exporter;
 our @ISA = qw(Exporter);
