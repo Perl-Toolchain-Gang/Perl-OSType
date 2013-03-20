@@ -61,7 +61,7 @@ my %OSTYPES = qw(
 
   MacOS       MacOS
   VMS         VMS
-  VOS         VOS
+  vos         VOS
   riscos      RiscOS
   amigaos     Amiga
   mpeix       MPEiX
