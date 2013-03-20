@@ -83,9 +83,19 @@ L<https://github.com/dagolden/perl-ostype>
 
 David Golden <dagolden@cpan.org>
 
-=head1 CONTRIBUTOR
+=head1 CONTRIBUTORS
+
+=over 4
+
+=item *
 
 Jonas B. Nielsen <jonasbn@hoarfrost.local>
+
+=item *
+
+Paul Green <Paul.Green@stratus.com>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 
