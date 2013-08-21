@@ -18,6 +18,7 @@ my %OSTYPES = qw(
   aix         Unix
   bsdos       Unix
   beos        Unix
+  bitrig      Unix
   dgux        Unix
   dragonfly   Unix
   dynixptx    Unix
