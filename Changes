@@ -2,6 +2,8 @@ Revision history for Perl module Perl::OSType
 
 {{$NEXT}}
 
+1.004     2013-08-21 18:57:46 America/New_York
+
     [ADDED]
 
     - 'bitrig' is a Unix
