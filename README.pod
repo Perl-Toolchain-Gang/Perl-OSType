@@ -1,12 +1,14 @@
 =pod
 
+=encoding utf-8
+
 =head1 NAME
 
 Perl::OSType - Map Perl operating system names to generic types
 
 =head1 VERSION
 
-version 1.003
+version 1.004
 
 =head1 SYNOPSIS
 
@@ -90,6 +92,10 @@ David Golden <dagolden@cpan.org>
 =item *
 
 Jonas B. Nielsen <jonasbn@hoarfrost.local>
+
+=item *
+
+Owain G. Ainsworth <oga@nicotinebsd.org>
 
 =item *
 
