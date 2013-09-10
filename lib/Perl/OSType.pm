@@ -1,5 +1,6 @@
 use strict;
 use warnings;
+
 package Perl::OSType;
 # ABSTRACT: Map Perl operating system names to generic types
 # VERSION
@@ -7,9 +8,7 @@ package Perl::OSType;
 require Exporter;
 our @ISA = qw(Exporter);
 
-our %EXPORT_TAGS = (
-  all => [ qw( os_type is_os_type ) ]
-);
+our %EXPORT_TAGS = ( all => [qw( os_type is_os_type )] );
 
 our @EXPORT_OK = @{ $EXPORT_TAGS{all} };
 
@@ -69,16 +68,16 @@ my %OSTYPES = qw(
 );
 
 sub os_type {
-  my ($os) = @_;
-  $os = $^O unless defined $os;
-  return $OSTYPES{ $os } || q{};
+    my ($os) = @_;
+    $os = $^O unless defined $os;
+    return $OSTYPES{$os} || q{};
 }
 
 sub is_os_type {
-  my ($type, $os) = @_;
-  return unless $type;
-  $os = $^O unless defined $os;
-  return os_type($os) eq $type;
+    my ( $type, $os ) = @_;
+    return unless $type;
+    $os = $^O unless defined $os;
+    return os_type($os) eq $type;
 }
 
 1;
@@ -138,3 +137,4 @@ L<Devel::CheckOS>
 
 =cut
 
+# vim: ts=4 sts=4 sw=4 et:
