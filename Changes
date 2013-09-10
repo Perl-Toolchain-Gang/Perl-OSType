@@ -2,6 +2,13 @@ Revision history for Perl module Perl::OSType
 
 {{$NEXT}}
 
+    [CHANGED]
+
+    - Ensured no non-core test dependencies
+
+    - Various non-functional changes to files and metadata included with
+      the distribution
+
 1.004     2013-08-21 18:57:46 America/New_York
 
     [ADDED]
