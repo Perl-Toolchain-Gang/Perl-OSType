@@ -2,6 +2,14 @@ Revision history for Perl module Perl::OSType
 
 {{$NEXT}}
 
+    [FIXES]
+
+    - Compile test could hang on Windows
+
+    [PREREQS]
+
+    - Dropped configure_requires for ExtUtils::MakeMaker to 6.17
+
 1.005     2013-09-10 19:47:24 America/New_York
 
     [CHANGED]
