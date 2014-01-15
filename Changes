@@ -2,6 +2,10 @@ Revision history for Perl module Perl::OSType
 
 {{$NEXT}}
 
+    [ADDED]
+
+    - Added 'android' as a Unix-type OS (Piotr Roszatycki)
+
 1.006     2013-09-25 13:57:38 America/New_York
 
     [FIXES]
