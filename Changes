@@ -2,6 +2,10 @@ Revision history for Perl module Perl::OSType
 
 {{$NEXT}}
 
+    [ADDED]
+
+    - Added 'minix' as a Unix-type OS (Chris Williams)
+
 1.007     2014-01-15 09:45:41-05:00 America/New_York
 
     [ADDED]
