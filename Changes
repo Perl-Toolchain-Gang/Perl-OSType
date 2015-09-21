@@ -2,6 +2,10 @@ Revision history for Perl module Perl::OSType
 
 {{$NEXT}}
 
+    [ADDED]
+
+    - Added 'sco' as a Unix-type OS
+
 1.008     2015-01-26 22:12:22-05:00 America/New_York
 
     [ADDED]
