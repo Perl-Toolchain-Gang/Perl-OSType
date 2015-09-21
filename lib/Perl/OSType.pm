@@ -4,7 +4,7 @@ use warnings;
 package Perl::OSType;
 # ABSTRACT: Map Perl operating system names to generic types
 
-our $VERSION = '1.009';
+our $VERSION = '1.010';
 
 require Exporter;
 our @ISA = qw(Exporter);
