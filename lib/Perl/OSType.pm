@@ -40,6 +40,7 @@ my %OSTYPES = qw(
   nto         Unix
   svr4        Unix
   svr5        Unix
+  sco         Unix
   sco_sv      Unix
   unicos      Unix
   unicosmk    Unix
