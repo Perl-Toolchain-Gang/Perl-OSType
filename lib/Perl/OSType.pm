@@ -47,6 +47,7 @@ my %OSTYPES = qw(
   solaris     Unix
   sunos       Unix
   cygwin      Unix
+  msys        Unix
   os2         Unix
   interix     Unix
   gnu         Unix
