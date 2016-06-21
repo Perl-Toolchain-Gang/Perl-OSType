@@ -2,6 +2,10 @@ Revision history for Perl module Perl::OSType
 
 {{$NEXT}}
 
+    [ADDED]
+
+    - Added 'msys' as a Unix-type OS (Graham Ollis)
+
 1.009     2015-09-21 10:09:35-04:00 America/New_York
 
     [ADDED]
